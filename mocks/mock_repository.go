@@ -7,6 +7,7 @@ package mocks
 import (
 	gomock "github.com/golang/mock/gomock"
 	reflect "reflect"
+	time "time"
 )
 
 // MockLunchTimeRepo is a mock of LunchTimeRepo interface
@@ -33,10 +34,10 @@ func (m *MockLunchTimeRepo) EXPECT() *MockLunchTimeRepoMockRecorder {
 }
 
 // GetLunchTime mocks base method
-func (m *MockLunchTimeRepo) GetLunchTime() int {
+func (m *MockLunchTimeRepo) GetLunchTime() time.Time {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetLunchTime")
-	ret0, _ := ret[0].(int)
+	ret0, _ := ret[0].(time.Time)
 	return ret0
 }
 

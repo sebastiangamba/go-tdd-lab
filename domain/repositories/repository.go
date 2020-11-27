@@ -1,5 +1,7 @@
 package repositories
 
+import "time"
+
 type LunchTimeRepo interface {
-	GetLunchTime() int
+	GetLunchTime() time.Time
 }

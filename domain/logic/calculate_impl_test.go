@@ -6,6 +6,7 @@ import (
 	"go-tdd-lab/mocks"
 	"os"
 	"testing"
+	"time"
 )
 
 var MockContainer *container.Dependencies
@@ -30,4 +31,26 @@ func Test_ShouldCallRepositoryWhenCalculatingTimeUntilLunch(t *testing.T) {
 	mockRepository.EXPECT().GetLunchTime()
 
 	sut.ObtainMinutesUntilLunchTime()
+}
+
+func Test_ShouldReturnSubtractionFromRepoResponseAndCurrentTime(t *testing.T) {
+	ctrl := gomock.NewController(t)
+	defer ctrl.Finish()
+	mockRepository := mocks.NewMockLunchTimeRepo(ctrl)
+
+	MockContainer.LunchTimeRepository = mockRepository
+
+	//Setup
+	location, _ := time.LoadLocation("America/Bogota")
+	testLunchTime := time.Date(2020, 11, 27, 12, 30, 0, 0,location )
+	expected := int(testLunchTime.Sub(time.Now()).Minutes())
+
+	// se agrega el comportamiento
+	mockRepository.EXPECT().GetLunchTime().Return(testLunchTime)
+
+	got, _ := sut.ObtainMinutesUntilLunchTime()
+	if got != expected {
+		// Falla si el resultado no es el esperado
+		t.Error("Result different from expected")
+	}
 }
