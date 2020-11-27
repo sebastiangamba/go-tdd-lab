@@ -1,5 +1,5 @@
 package logic
 
 type LunchTimeCalculator interface {
-	ObtainMinutesUntilLunchTime() int
+	ObtainMinutesUntilLunchTime() (int, error)
 }

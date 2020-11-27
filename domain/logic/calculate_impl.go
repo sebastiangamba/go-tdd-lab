@@ -10,8 +10,8 @@ func NewLunchTimeCalculatorImpl(dependencies *container.Dependencies) LunchTimeC
 	return &LunchTimeCalculatorImpl{dependencies: dependencies}
 }
 
-func (l *LunchTimeCalculatorImpl) ObtainMinutesUntilLunchTime() int {
-	panic("implement me")
+func (l *LunchTimeCalculatorImpl) ObtainMinutesUntilLunchTime() (int, error) {
+	return 0, nil
 }
 
 
