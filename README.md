@@ -18,7 +18,8 @@ Servicio HTTP que expone un método GET,
 que retorna el tiempo faltante hasta la siguiente hora de almuerzo.
 
 Requerimientos
- -  Se debe exponer un metodo http GET que retorne un JSON con la respuesta:
+ -  Se debe exponer un metodo http GET que retorne un JSON con 
+    la respuesta:
 
     {
         // cantidad de minutos faltantes para el almuerzo                    
