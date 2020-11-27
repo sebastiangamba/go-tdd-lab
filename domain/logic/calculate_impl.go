@@ -1,6 +1,9 @@
 package logic
 
-import "go-tdd-lab/container"
+import (
+	"go-tdd-lab/container"
+	"go-tdd-lab/domain/repositories"
+)
 
 type LunchTimeCalculatorImpl struct {
 	dependencies *container.Dependencies
@@ -11,6 +14,9 @@ func NewLunchTimeCalculatorImpl(dependencies *container.Dependencies) LunchTimeC
 }
 
 func (l *LunchTimeCalculatorImpl) ObtainMinutesUntilLunchTime() (int, error) {
+
+	repo := l.dependencies.LunchTimeRepository.(repositories.LunchTimeRepo)
+	repo.GetLunchTime()
 	return 0, nil
 }
 

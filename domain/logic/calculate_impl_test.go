@@ -15,7 +15,6 @@ var sut LunchTimeCalculator
 func TestMain(m *testing.M) {
 	MockContainer = &container.Dependencies{}
 	sut = NewLunchTimeCalculatorImpl(MockContainer)
-	// Esto va por nomenclatura del TestMain
 	exitVal := m.Run()
 	os.Exit(exitVal)
 }
@@ -24,6 +23,9 @@ func Test_ShouldCallRepositoryWhenCalculatingTimeUntilLunch(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	defer ctrl.Finish()
 	mockRepository := mocks.NewMockLunchTimeRepo(ctrl)
+
+	// Se agrega el mock al contenedor de dependencias
+	MockContainer.LunchTimeRepository = mockRepository
 
 	mockRepository.EXPECT().GetLunchTime()
 
