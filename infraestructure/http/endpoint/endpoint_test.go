@@ -29,7 +29,7 @@ func Test_ShouldReturnDomainLogicResponse(t *testing.T) {
 	domainResponse := 10
 		mockDomainLogic.EXPECT().ObtainMinutesUntilLunchTime().Return(domainResponse, nil)
 
-	endpointFunc := makePostDocumentDataEndpoint(MockContainer)
+	endpointFunc := MakeLunchTimeEndpoint(MockContainer)
 	got, _ := endpointFunc(testContext, testRequest)
 
 	if got != domainResponse {
