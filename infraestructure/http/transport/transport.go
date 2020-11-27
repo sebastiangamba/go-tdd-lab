@@ -3,15 +3,14 @@ package transport
 import (
 	"context"
 	"encoding/json"
-	"fmt"
+	kithttp "github.com/go-kit/kit/transport/http"
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"go-tdd-lab/container"
 	"go-tdd-lab/infraestructure/http/endpoint"
 	"go-tdd-lab/infraestructure/http/model"
 	"net/http"
 	"os"
-	"github.com/gorilla/handlers"
-	kithttp "github.com/go-kit/kit/transport/http"
 )
 
 type Transport struct {
