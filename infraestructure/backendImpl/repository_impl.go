@@ -12,6 +12,7 @@ func NewLunchTimeRepositoryImpl() *LunchTimeRepositoryImpl {
 }
 
 func (l *LunchTimeRepositoryImpl) GetLunchTime() time.Time {
-	panic("implement me")
+	location, _ := time.LoadLocation("America/Bogota")
+	return time.Date(2020, 11, 27, 12, 30, 0, 0,location )
 }
 
